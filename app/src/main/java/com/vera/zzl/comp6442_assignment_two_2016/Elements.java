@@ -1,23 +1,22 @@
-package com.vera.zzl.comp6442_assignment_two_2016;
-
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
 /**
- * Created by Zhaolian on 24/04/2016.
- * Reference URL: http://www.csharpprogramming.tips/2015/12/infix-notation-parser-via-shunting-yard.html
+ * Created by Zhaolian on 26/04/2016.
  */
 public class Elements {
     public static String Numbers = "0123456789";
     public static String Operations = "+-*/";
     public static String Brackets = "()";
-    public static String AllowedCharacters = Numbers+Operations+Brackets;
+    public static final char whiteSpace[] = {' ','\n','\t','\r','f'};
+    public static String AllowedCharacters = Numbers+Operations+Brackets+" ";
+
+
 
     public enum Associativity{Left, Right}
     //The associativity of the operators.
-    public static HashMap<Character, Associativity> opertatorAssociativity = new HashMap<Character, Associativity>();
-    public static HashMap<Character,Integer> operatorPredence = new HashMap<>();
+    public static HashMap<String, Associativity> opertatorAssociativity = new HashMap<>();
+    public static HashMap<String,Integer> operatorPredence = new HashMap<>();
     public static boolean IsNumeric(String text){
         for (char c : text.toCharArray()){
             if (!Numbers.contains(String.valueOf(c)))
@@ -48,21 +47,21 @@ public class Elements {
     }
 
     public static void setOperatorAssociate(){
-        opertatorAssociativity.put('+', Associativity.Left);
-        opertatorAssociativity.put('-', Associativity.Left);
-        opertatorAssociativity.put('*', Associativity.Left);
-        opertatorAssociativity.put('/', Associativity.Left);
-        opertatorAssociativity.put('^', Associativity.Right);
+        opertatorAssociativity.put("+", Associativity.Left);
+        opertatorAssociativity.put("-", Associativity.Left);
+        opertatorAssociativity.put("*", Associativity.Left);
+        opertatorAssociativity.put("/", Associativity.Left);
+        opertatorAssociativity.put("^", Associativity.Right);
     }
 
     public static void setOperatorPredence(){
-        operatorPredence.put('(',0);
-        operatorPredence.put(')',0);
-        operatorPredence.put('+',1);
-        operatorPredence.put('-',1);
-        operatorPredence.put('*',2);
-        operatorPredence.put('/',2);
-        operatorPredence.put('^',3);
+        operatorPredence.put("(",0);
+        operatorPredence.put(")",0);
+        operatorPredence.put("+",1);
+        operatorPredence.put("-",1);
+        operatorPredence.put("*",2);
+        operatorPredence.put("/",2);
+        operatorPredence.put("^",3);
 
     }
 }

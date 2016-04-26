@@ -1,18 +1,11 @@
-package com.vera.zzl.comp6442_assignment_two_2016;
-
-import android.media.session.MediaSession;
-
 import java.util.List;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
 /**
- * Created by Zhaolian on 22/04/2016.
- * Reference URL: https://en.wikipedia.org/wiki/Shunting-yard_algorithm
- *
+ * Created by Zhaolian on 26/04/2016.
  */
 public class StringDivide {
-
     private static String Expression = "( 2 + 3 * 4 / 5 * ( 10 * 4))";
     private static StringTokenizer stringTokenizer;
     private static Stack<Character> operatorStack = new Stack<>();
@@ -34,7 +27,7 @@ public class StringDivide {
                         Elements.operatorPredence.get(c) <= Elements.operatorPredence.get(o))
                         ||
                         (Elements.opertatorAssociativity.get(c) == Elements.Associativity.Right&&
-                        Elements.operatorPredence.get(c) < Elements.operatorPredence.get(o)))
+                                Elements.operatorPredence.get(c) < Elements.operatorPredence.get(o)))
                 {
                     output.add(operatorStack.pop().toString());
                 }
@@ -84,5 +77,12 @@ public class StringDivide {
         }
 
         return output;
+    }
+
+    public static void main(String[] args) {
+        String testExpression = "( 2 + 3 ) * 5";
+        List<String> result = Divide(testExpression);
+        for (String c : result)
+            System.out.println(c);
     }
 }
