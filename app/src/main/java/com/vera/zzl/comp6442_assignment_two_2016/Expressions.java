@@ -19,13 +19,13 @@ public abstract class Expressions {
     public abstract float evaluate();
 
     private static Stack<Expressions> expressionsStack = new Stack<>();
-    static public Stack<Expressions> parse(Tokenizer myTokenizer) throws ParseException{
+    static public Expressions parse(Tokenizer myTokenizer) throws ParseException{
 
         /*  Add code that will parse the string
             creating the expression for that string */
         //Tokenizer myTokenizer = new Tokenizer(str);
+        Object currentToken = myTokenizer.getCurrentToken();
         while (myTokenizer.hasMoreTokens()) {
-            Object currentToken = myTokenizer.getCurrentToken();
             if ((currentToken instanceof Float)) {
                 float v = (float) currentToken;
                 myTokenizer.nextToken();
@@ -41,29 +41,39 @@ public abstract class Expressions {
                 Expressions result = new Addition(lPara, rPara);
                 expressionsStack.push(result);
             } else if (currentToken.equals("-")) {
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
                 myTokenizer.nextToken();
                 Expressions rPara = expressionsStack.pop();
                 Expressions lPara = expressionsStack.pop();
                 Expressions result = new Subtraction(lPara, rPara);
+                expressionsStack.push(result);
             } else if (currentToken.equals("*")) {
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
                 myTokenizer.nextToken();
                 Expressions rPara = expressionsStack.pop();
                 Expressions lPara = expressionsStack.pop();
                 Expressions result = new Multiplication(lPara, rPara);
+                expressionsStack.push(result);
             } else if (currentToken.equals("/")) {
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
                 myTokenizer.nextToken();
                 Expressions rPara = expressionsStack.pop();
                 Expressions lPara = expressionsStack.pop();
                 Expressions result = new Division(lPara, rPara);
-            } else if (currentToken.equals("(")) {
-                myTokenizer.parse("(");
-            } else if (currentToken.equals(")")) {
-                myTokenizer.parse(")");
+                expressionsStack.push(result);
             } else {
                 throw new ParseException();
             }
+            currentToken = myTokenizer.getCurrentToken();
         }
-        return expressionsStack;
+        Expressions expressionResult = expressionsStack.peek();
+        return expressionResult;
     }
 
         /*  This is a place holder in order to get show

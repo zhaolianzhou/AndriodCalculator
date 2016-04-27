@@ -13,16 +13,17 @@ public class EquationtoPostfix {
     private String infixExpression;
     private String postfixExpression;
     private Tokenizer infixTokenizer;
+    private static Stack<String> operatorStack = new Stack<>();
+    private static List<String> output = new ArrayList<>();
     private static int currentPosition = 0;
     //private static char currentChar;
-
     public EquationtoPostfix(String str){
         infixExpression = str;
         infixTokenizer = new Tokenizer(str);
+        Convert(infixTokenizer);
     }
     public List<String> Convert(Tokenizer myTokenizer){
-        Stack<String> operatorStack = new Stack<>();
-        List<String> output = new ArrayList<>();
+
         while (myTokenizer.hasMoreTokens()) {
             Object currentToken = myTokenizer.getCurrentToken();
             if (currentToken instanceof Float) {
@@ -40,7 +41,7 @@ public class EquationtoPostfix {
                 }
                 operatorStack.push(currentToken.toString());
             } else if (currentToken.equals("(")) {
-                output.add(currentToken.toString());
+                //output.add(currentToken.toString());
                 //operatorStack.push((String) currentToken);
             } else if (currentToken.equals(")")) {
                 boolean leftParenthesisFound = false;
@@ -54,7 +55,7 @@ public class EquationtoPostfix {
                         break;
                     }
                 }
-                output.add(currentToken.toString());
+                //output.add(currentToken.toString());
                 if (!leftParenthesisFound) {
                     //do something with "The algebraic string contains mismatched parentheses (missing a left parenthesis)."
                     // throw new ParseException();
@@ -79,8 +80,8 @@ public class EquationtoPostfix {
 
     public String toString(){
         String result = " ";
-        for (String c : this.Convert(this.infixTokenizer)){
-            result +=c + " ";
+        for (String c : output){
+            result = result+c + " ";
         }
         return result;
     }

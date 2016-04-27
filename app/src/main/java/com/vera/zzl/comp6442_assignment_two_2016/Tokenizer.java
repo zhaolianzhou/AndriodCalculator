@@ -8,15 +8,14 @@ public class Tokenizer {
     public static String Numbers = "012345678";
     public static String Decimal = ".";
     public static String Operations = "+-*/()";
-    //public static String Brackets = "()";
     public static final char whitespace[] = {' ', '\n', '\t','\r','\f'};
     public static String ValidFloat = Numbers + Decimal;
     public static String AllowedCharacters = Numbers+Operations+Decimal+" ";
 
-    private static String inputString = "";
+    private String inputString = "";
     private static char currentChar;
-    private static Object currentToken;
-    private static int currentPosition = 0;
+    private static Object currentToken = " ";
+    private int currentPosition = 0;
     /**
      * Constructs a string tokenizer for the specified string.
      * The tokenizer uses the default delimiter set, which is " \t\n\r\f":
@@ -27,7 +26,6 @@ public class Tokenizer {
      */
     public Tokenizer(String str){
         inputString = str;
-        currentPosition = 0;
         nextToken();
     }
     public Tokenizer(String str, String delim){
@@ -43,6 +41,7 @@ public class Tokenizer {
         return currentToken;
     }
     public boolean hasMoreTokens(){
+        //return currentPosition < inputString.length();
         return currentToken != null;
     }
     public void nextToken(){
@@ -95,7 +94,7 @@ public class Tokenizer {
         return false;
     }
     public void parse(Object o) throws ParseException{
-        if (currentToken == null || currentToken.equals(o))
+        if ( currentToken == null ||currentToken.equals(o))
             throw new ParseException();
         nextToken();
     }
