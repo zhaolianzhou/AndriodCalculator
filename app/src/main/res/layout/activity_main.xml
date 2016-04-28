@@ -8,7 +8,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.vera.zzl.comp6442_assignment_two_2016.MainActivity"
-    android:background="#5c5b5b">
+    android:layout_marginBottom="-15dip"
+    android:layout_marginLeft="-15dip"
+    android:layout_marginRight="-15dip"
+    android:layout_marginTop="-15dip"
+    >
 
     <TextView
         android:layout_width="match_parent"
@@ -22,7 +26,8 @@
         android:textColor="#ffffff"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textSize="50dp" />
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -32,78 +37,102 @@
         android:orientation="horizontal"
 
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/gridLayout"
-        android:background="#5c5b5b">
+        android:background="#5c5b5b"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
 
         <Button
             android:layout_columnSpan="3"
             android:layout_gravity="fill"
             android:text="DEL"
             android:background="@drawable/button_gray"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="clearData"
+            />
 
         <Button
             android:layout_column="3"
             android:text="/"
             android:textColor="#ffffff"
             android:textSize="25dp"
-            android:background="@drawable/button_orange" />
+            android:background="@drawable/button_orange"
+            android:layout_width="116dp" />
 
 
         <Button android:text="7"
             android:background="@drawable/button_gray"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="buttonValueSeven"
+            />
 
         <Button android:text="8"
             android:background="@drawable/button_gray"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="buttonValueEight"
+            />
 
         <Button android:text="9"
             android:background="@drawable/button_gray"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="buttonValueNine"
+            />
 
         <Button android:text="*"
             android:textColor="#ffffff"
             android:background="@drawable/button_orange"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:layout_width="116dp" />
 
         <Button android:text="4"
             android:background="@drawable/button_gray"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="buttonValueFour"
+            />
 
         <Button android:text="5"
             android:background="@drawable/button_gray"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="buttonValueFive"
+            />
 
         <Button android:text="6"
             android:background="@drawable/button_gray"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="buttonValueSix"
+            />
 
         <Button android:text="-"
             android:textColor="#ffffff"
             android:background="@drawable/button_orange"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:layout_width="116dp" />
 
         <Button android:text="1"
             android:background="@drawable/button_gray"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="buttonValueOne"
+            />
 
         <Button android:text="2"
             android:background="@drawable/button_gray"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="buttonValueTwo"
+            />
 
         <Button android:text="3"
             android:background="@drawable/button_gray"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="buttonValueThree"
+            />
 
         <Button  android:text="+"
             android:textColor="#ffffff"
             android:background="@drawable/button_orange"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:layout_width="116dp" />
 
         <Button
             android:layout_columnSpan="2"
@@ -111,14 +140,18 @@
             android:text="0"
             android:background="@drawable/button_gray"
             android:textSize="25dp"
+            android:onClick="buttonValueZero"
             />
         <Button android:text="."
             android:background="@drawable/button_gray"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="buttonValueDot"
+            />
         <Button android:text="="
             android:textColor="#ffffff"
             android:background="@drawable/button_orange"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:layout_width="116dp" />
 
     </GridLayout>
 </RelativeLayout>
