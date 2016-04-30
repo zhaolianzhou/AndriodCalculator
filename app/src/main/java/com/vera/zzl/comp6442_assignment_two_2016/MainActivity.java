@@ -25,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
         textOutputView = (TextView) findViewById(R.id.textOutputView);
         Typeface type = Typeface.createFromAsset(getAssets(),"fonts/digital-7.ttf");
         textInputView.setTypeface(type);
+        textOutputView.setTypeface(type);
 
     }
 
     public  void clearData(View view){
         displayValue = "";
         textInputView.setText("");
+        textOutputView.setText("");
     }
 
     private void updateTextView(String value){
@@ -101,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void buttonPi (View view){
-        textInputView.setText("" + Math.PI);
+        textInputView.setText("π");
+        textOutputView.setText("" + Math.PI);
     }
 
 
