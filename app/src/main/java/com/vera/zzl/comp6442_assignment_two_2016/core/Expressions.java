@@ -1,6 +1,13 @@
-import java.beans.Expression;
+package com.vera.zzl.comp6442_assignment_two_2016.core;
+
+import com.vera.zzl.comp6442_assignment_two_2016.Operation.Number;
+import com.vera.zzl.comp6442_assignment_two_2016.Operation.Addition;
+import com.vera.zzl.comp6442_assignment_two_2016.Operation.Division;
+import com.vera.zzl.comp6442_assignment_two_2016.Operation.Multiplication;
+import com.vera.zzl.comp6442_assignment_two_2016.Operation.Subtraction;
+import com.vera.zzl.comp6442_assignment_two_2016.exceptions.ParseException;
+
 import java.util.Stack;
-import java.util.StringTokenizer;
 
 /**
  * Created by Zhaolian on 25/04/2016.
@@ -19,7 +26,7 @@ public abstract class Expressions {
     public abstract float evaluate();
 
     private static Stack<Expressions> expressionsStack = new Stack<>();
-    static public Expressions parse(Tokenizer myTokenizer) throws ParseException{
+    static public Expressions parse(Tokenizer myTokenizer) throws ParseException {
 
         /*  Add code that will parse the string
             creating the expression for that string */

@@ -1,6 +1,6 @@
+package com.vera.zzl.comp6442_assignment_two_2016.core;
 
 import java.util.ArrayList;
-import java.util.FormatFlagsConversionMismatchException;
 import java.util.List;
 import java.util.Stack;
 
@@ -9,13 +9,13 @@ import java.util.Stack;
  */
 public class EquationtoPostfix {
     //Store the expression.
-    private static Stack<Expressions> expressionsStack = new Stack<>();
+    private Stack<Expressions> expressionsStack = new Stack<>();
     private String infixExpression;
     private String postfixExpression;
     private Tokenizer infixTokenizer;
-    private static Stack<String> operatorStack = new Stack<>();
-    private static List<String> output = new ArrayList<>();
-    private static int currentPosition = 0;
+    private Stack<String> operatorStack = new Stack<>();
+    private List<String> output = new ArrayList<>();
+    private int currentPosition = 0;
     //private static char currentChar;
     public EquationtoPostfix(String str){
         infixExpression = str;
