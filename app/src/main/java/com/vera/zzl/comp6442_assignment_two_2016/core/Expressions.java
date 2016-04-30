@@ -1,5 +1,6 @@
 package com.vera.zzl.comp6442_assignment_two_2016.core;
 
+import com.vera.zzl.comp6442_assignment_two_2016.Operation.Mod;
 import com.vera.zzl.comp6442_assignment_two_2016.Operation.Number;
 import com.vera.zzl.comp6442_assignment_two_2016.Operation.Addition;
 import com.vera.zzl.comp6442_assignment_two_2016.Operation.Division;
@@ -74,7 +75,16 @@ public abstract class Expressions {
                 Expressions lPara = expressionsStack.pop();
                 Expressions result = new Division(lPara, rPara);
                 expressionsStack.push(result);
-            } else {
+            } else if (currentToken.equals("%")){
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
+                myTokenizer.nextToken();
+                Expressions rPara = expressionsStack.pop();
+                Expressions lPara = expressionsStack.pop();
+                Expressions result = new Mod(lPara, rPara);
+                expressionsStack.push(result);
+            }else {
                 throw new ParseException();
             }
             currentToken = myTokenizer.getCurrentToken();

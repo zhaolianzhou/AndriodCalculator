@@ -6,29 +6,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.vera.zzl.comp6442_assignment_two_2016.core.EquationtoPostfix;
+import com.vera.zzl.comp6442_assignment_two_2016.core.Expressions;
+import com.vera.zzl.comp6442_assignment_two_2016.core.Tokenizer;
+import com.vera.zzl.comp6442_assignment_two_2016.exceptions.ParseException;
+
 public class MainActivity extends AppCompatActivity {
     int plusOrMinusCounter = 0;
-    TextView textView ;
+    TextView textInputView;
+    TextView textOutputView;
     String displayValue = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView=(TextView) findViewById(R.id.textViewDisplay);
+        textInputView =(TextView) findViewById(R.id.textViewDisplay);
+        textOutputView = (TextView) findViewById(R.id.textOutputView);
         Typeface type = Typeface.createFromAsset(getAssets(),"fonts/digital-7.ttf");
-        textView.setTypeface(type);
+        textInputView.setTypeface(type);
 
     }
 
     public  void clearData(View view){
         displayValue = "";
-        textView.setText("");
+        textInputView.setText("");
     }
 
     private void updateTextView(String value){
         displayValue = displayValue + value ;
-        textView.setText(displayValue);
+        textInputView.setText(displayValue);
     }
     public void buttonValueSeven(View view){
         updateTextView("7");
@@ -63,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
     public void buttonValueDot(View view){
         updateTextView(".");
     }
+
+    public void buttonOperatorInc(View view){updateTextView("+");}
+    public void buttonOperatorDec(View view){updateTextView("-");}
+    public void buttonOperatorMul(View view){updateTextView("*");}
+    public void buttonOperatorDiv(View view){updateTextView("/");}
     public void buttonPlusOrMinus(View view){
         int temp;
         if ( plusOrMinusCounter % 2 == 0 ){
@@ -71,20 +83,33 @@ public class MainActivity extends AppCompatActivity {
                 temp = temp * -1;
             }
             displayValue = ""+ temp;
-            textView.setText(displayValue);
+            textInputView.setText(displayValue);
 
         }else {
             temp = Integer.parseInt(displayValue) * -1;
             displayValue = ""+ temp;
-            textView.setText(displayValue);
+            textInputView.setText(displayValue);
         }
         plusOrMinusCounter++;
     }
     public void buttonModulus (View view){
-
-
+        updateTextView("%");
     }
     public void buttonPi (View view){
-        textView.setText(""+ Math.PI);
+        textInputView.setText("" + Math.PI);
+    }
+
+
+    public void Calculate(View view){
+        String inputExpression = textInputView.getText().toString();
+        EquationtoPostfix PostfixExpression = new EquationtoPostfix(inputExpression);
+        String result = PostfixExpression.toString();
+        Tokenizer evaluate = new Tokenizer(result);
+        try {
+            Expressions finalExpressionTree = Expressions.parse(evaluate);
+            textOutputView.setText(String.valueOf(finalExpressionTree.evaluate()));
+        }catch (ParseException e){
+
+        }
     }
 }
