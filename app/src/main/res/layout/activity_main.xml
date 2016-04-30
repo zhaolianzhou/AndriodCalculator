@@ -7,10 +7,199 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.vera.zzl.comp6442_assignment_two_2016.MainActivity">
+    tools:context="com.vera.zzl.comp6442_assignment_two_2016.MainActivity"
+    android:layout_marginBottom="-17dip"
+    android:layout_marginLeft="-16dip"
+
+    android:layout_marginRight="-16dip"
+
+    android:layout_marginTop="-17dip"
+
+    >
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/DefaultDisplay"
+        android:id="@+id/textViewDisplay"
+        android:gravity="top|center"
+        android:background="#605c5c"
+        android:textColor="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="75sp"
+        android:textAlignment="viewEnd" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/DefaultDisplay"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textOutputView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/textViewDisplay"
+        android:layout_alignEnd="@+id/textViewDisplay"
+        android:layout_above="@+id/gridLayout"
+        android:background="#605c5c"
+        android:textColor="#ffffff"
+        android:textSize="75sp"
+        android:textAlignment="viewEnd" />/>
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_gravity="center"
+        android:columnCount="4"
+        android:orientation="horizontal"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/gridLayout"
+        android:background="#5c5b5b"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:rowCount="5">
+
+        <Button
+            android:layout_columnSpan="1"
+            android:layout_gravity="fill"
+            android:text="@string/Delete"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="clearData"
+            />
+        <Button android:text="@string/Inc_Dec"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonPlusOrMinus"
+            />
+        <Button android:text="@string/Mod"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonModulus"
+            />
+
+        <Button
+            android:layout_column="3"
+            android:text="@string/Div"
+            android:textColor="#ffffff"
+            android:textSize="25dp"
+            android:background="@drawable/button_orange"
+            android:textAlignment="center"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:onClick="buttonOperatorDiv"
+            />
+
+
+        <Button android:text="@string/Seven"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonValueSeven"
+            />
+
+        <Button android:text="@string/Eight"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonValueEight"
+            />
+
+        <Button android:text="@string/Nine"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonValueNine"
+            />
+
+        <Button android:text="@string/Mul"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_orange"
+            android:textSize="25dp"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:textAlignment="center"
+            android:onClick="buttonOperatorMul"
+            />
+
+        <Button android:text="@string/Four"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonValueFour"
+            />
+
+        <Button android:text="@string/Five"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonValueFive"
+            />
+
+        <Button android:text="@string/Six"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonValueSix"
+            />
+
+        <Button android:text="@string/Dec"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_orange"
+            android:textSize="25dp"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:textAlignment="center"
+            android:onClick="buttonOperatorDec"
+            />
+
+        <Button android:text="@string/One"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonValueOne"
+            />
+
+        <Button android:text="@string/Two"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonValueTwo"
+            />
+
+        <Button android:text="@string/Three"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonValueThree"
+            />
+
+        <Button  android:text="@string/Inc"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_orange"
+            android:textSize="25dp"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:textAlignment="center"
+            android:onClick="buttonOperatorInc"/>
+
+        <Button
+            android:layout_columnSpan="2"
+            android:layout_gravity="fill"
+            android:text="@string/Zero"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonValueZero"
+            />
+        <Button android:text="@string/Decimal"
+            android:background="@drawable/button_gray"
+            android:textSize="25dp"
+            android:onClick="buttonValueDot"
+            />
+        <Button android:text="@string/Equal"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_orange"
+            android:textSize="25dp"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:textAlignment="center"
+            android:onClick="Calculate"/>
+
+    </GridLayout>
+
+
 </RelativeLayout>

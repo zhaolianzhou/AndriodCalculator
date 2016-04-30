@@ -9,4 +9,7 @@ package com.vera.zzl.comp6442_assignment_two_2016.exceptions;
  * @since 26/04/2016
  */
 public class ParseException extends Exception {
+    public ParseException(){
+        super();
+    }
 }
