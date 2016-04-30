@@ -95,11 +95,20 @@ public class MainActivity extends AppCompatActivity {
     public void buttonModulus (View view){
         updateTextView("%");
     }
+
+    /**
+     * Need further actions.
+     * @param view
+     */
     public void buttonPi (View view){
         textInputView.setText("" + Math.PI);
     }
 
 
+    /**
+     * Do the calculate, need some optimize
+     * @param view
+     */
     public void Calculate(View view){
         String inputExpression = textInputView.getText().toString();
         EquationtoPostfix PostfixExpression = new EquationtoPostfix(inputExpression);
