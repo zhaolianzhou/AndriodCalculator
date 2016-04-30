@@ -1,12 +1,13 @@
 package com.vera.zzl.comp6442_assignment_two_2016;
 
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    int plusOrMinusCounter = 0;
     TextView textView ;
     String displayValue = "";
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         textView=(TextView) findViewById(R.id.textViewDisplay);
         Typeface type = Typeface.createFromAsset(getAssets(),"fonts/digital-7.ttf");
         textView.setTypeface(type);
+
     }
 
     public  void clearData(View view){
@@ -28,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         displayValue = displayValue + value ;
         textView.setText(displayValue);
     }
-
     public void buttonValueSeven(View view){
         updateTextView("7");
     }
@@ -61,5 +62,29 @@ public class MainActivity extends AppCompatActivity {
     }
     public void buttonValueDot(View view){
         updateTextView(".");
+    }
+    public void buttonPlusOrMinus(View view){
+        int temp;
+        if ( plusOrMinusCounter % 2 == 0 ){
+            temp = Integer.parseInt(displayValue);
+            if ( temp < 0 ){
+                temp = temp * -1;
+            }
+            displayValue = ""+ temp;
+            textView.setText(displayValue);
+
+        }else {
+            temp = Integer.parseInt(displayValue) * -1;
+            displayValue = ""+ temp;
+            textView.setText(displayValue);
+        }
+        plusOrMinusCounter++;
+    }
+    public void buttonModulus (View view){
+
+
+    }
+    public void buttonPi (View view){
+        textView.setText(""+ Math.PI);
     }
 }
