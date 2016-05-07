@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     TextView textOutputView;
     String displayValue = "";
 
+    boolean equalClicked = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +29,14 @@ public class MainActivity extends AppCompatActivity {
         textOutputView = (TextView) findViewById(R.id.textOutputView);
         Typeface type = Typeface.createFromAsset(getAssets(),"fonts/digital-7.ttf");
         textInputView.setTypeface(type);
+        textOutputView.setTypeface(type);
 
     }
 
     public  void clearData(View view){
         displayValue = "";
         textInputView.setText("");
+        textOutputView.setText("");
     }
 
     private void updateTextView(String value){
@@ -40,43 +44,72 @@ public class MainActivity extends AppCompatActivity {
         textInputView.setText(displayValue);
     }
     public void buttonValueSeven(View view){
+
+        startNewExpression(view);
         updateTextView("7");
     }
+
+    private void startNewExpression(View view) {
+        if (equalClicked) {
+            equalClicked =false;
+            clearData(view);
+        }
+    }
+
     public void buttonValueEight(View view){
+        startNewExpression(view);
         updateTextView("8");
     }
     public void buttonValueNine(View view){
+        startNewExpression(view);
         updateTextView("9");
     }
     public void buttonValueFour(View view){
+        startNewExpression(view);
         updateTextView("4");
     }
     public void buttonValueFive(View view){
+        startNewExpression(view);
         updateTextView("5");
     }
     public void buttonValueSix(View view){
+        startNewExpression(view);
         updateTextView("6");
     }
     public void buttonValueOne(View view){
+        startNewExpression(view);
         updateTextView("1");
     }
     public void buttonValueTwo(View view){
+        startNewExpression(view);
         updateTextView("2");
     }
     public void buttonValueThree(View view){
+        startNewExpression(view);
         updateTextView("3");
     }
     public void buttonValueZero(View view){
+        startNewExpression(view);
         updateTextView("0");
     }
     public void buttonValueDot(View view){
+
+        startNewExpression(view);
         updateTextView(".");
     }
 
-    public void buttonOperatorInc(View view){updateTextView("+");}
-    public void buttonOperatorDec(View view){updateTextView("-");}
-    public void buttonOperatorMul(View view){updateTextView("*");}
-    public void buttonOperatorDiv(View view){updateTextView("/");}
+    public void buttonOperatorInc(View view){
+        startNewExpression(view);
+        updateTextView("+");}
+    public void buttonOperatorDec(View view){
+        startNewExpression(view);
+        updateTextView("-");}
+    public void buttonOperatorMul(View view){
+        startNewExpression(view);
+        updateTextView("*");}
+    public void buttonOperatorDiv(View view){
+        startNewExpression(view);
+        updateTextView("/");}
     public void buttonPlusOrMinus(View view){
         int temp;
         if ( plusOrMinusCounter % 2 == 0 ){
@@ -95,13 +128,28 @@ public class MainActivity extends AppCompatActivity {
         plusOrMinusCounter++;
     }
     public void buttonModulus (View view){
+
+        startNewExpression(view);
         updateTextView("%");
     }
+
+    /**
+     * Need further actions.
+     * @param view
+     */
     public void buttonPi (View view){
+        textInputView.setText("π");
+        textOutputView.setText("" + Math.PI);
+
+        startNewExpression(view);
         textInputView.setText("" + Math.PI);
     }
 
 
+    /**
+     * Do the calculate, need some optimize
+     * @param view
+     */
     public void Calculate(View view){
         String inputExpression = textInputView.getText().toString();
         EquationtoPostfix PostfixExpression = new EquationtoPostfix(inputExpression);
@@ -112,6 +160,11 @@ public class MainActivity extends AppCompatActivity {
             textOutputView.setText(String.valueOf(finalExpressionTree.evaluate()));
         }catch (ParseException e){
 
+        }
+
+        finally {
+            equalClicked =true;
+            //clearData(view);
         }
     }
 }
