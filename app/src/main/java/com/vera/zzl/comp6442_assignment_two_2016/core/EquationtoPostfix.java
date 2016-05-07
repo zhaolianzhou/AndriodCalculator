@@ -39,6 +39,18 @@ public class EquationtoPostfix {
                     System.err.println("Invalid Expression");
                     break;
                 }
+            }else if (currentToken.toString().equals("+")&&previousToken){
+                myTokenizer.nextToken();
+                Object valueToken = myTokenizer.getCurrentToken();
+                if (valueToken instanceof Float) {
+                    float v = (float)(valueToken);
+                    Expressions number = new Number(v);
+                    output.add(number);
+                    previousToken = false;
+                } else {
+                    System.err.println("Invalid Expression");
+                    break;
+                }
             }else{
                 if (currentToken instanceof Float) {
                     float v = (float)(currentToken);

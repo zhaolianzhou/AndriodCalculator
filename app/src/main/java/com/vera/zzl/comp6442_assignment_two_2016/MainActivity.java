@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         updateTextView("0");
     }
     public void buttonValueDot(View view){
-
         startNewExpression(view);
         updateTextView(".");
     }
