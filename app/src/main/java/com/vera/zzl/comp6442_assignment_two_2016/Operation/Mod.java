@@ -9,27 +9,27 @@ public class Mod extends Expressions {
     private Expressions leftPara;
     private Expressions rightPara;
 
-    public Mod(Expressions leftPara, Expressions rightPara){
+    public Mod(Expressions leftPara, Expressions rightPara) {
         this.leftPara = leftPara;
         this.rightPara = rightPara;
     }
 
     @Override
-    public String show(){
-        return "( "+ leftPara.show()+" " + rightPara.show() +" %)";
+    public String show() {
+        return "( " + leftPara.show() + " " + rightPara.show() + " %)";
     }
 
     @Override
-    public float evaluate(){
+    public float evaluate() {
         try {
             float rPara = rightPara.evaluate();
             float lPara = leftPara.evaluate();
-            if (lPara!= Math.round(lPara)||rPara!= Math.round(rPara)){
+            if (lPara != Math.round(lPara) || rPara != Math.round(rPara)) {
                 throw new ArithmeticException("Parameter is not a integer.");
             }
 
-            return leftPara.evaluate()%rightPara.evaluate();
-        }catch (ArithmeticException e){
+            return leftPara.evaluate() % rightPara.evaluate();
+        } catch (ArithmeticException e) {
             System.out.println("Warning! Attempted to mod by an non-integer!");
         }
         return 0;
