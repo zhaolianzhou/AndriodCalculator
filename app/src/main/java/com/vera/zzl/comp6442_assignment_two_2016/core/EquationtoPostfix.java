@@ -3,6 +3,7 @@ package com.vera.zzl.comp6442_assignment_two_2016.core;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import com.vera.zzl.comp6442_assignment_two_2016.Operation.Number;
 
 /**
  * Created by Zhaolian on 26/04/2016.
@@ -14,7 +15,7 @@ public class EquationtoPostfix {
     private String postfixExpression;
     private Tokenizer infixTokenizer;
     private Stack<String> operatorStack = new Stack<>();
-    private List<String> output = new ArrayList<>();
+    private List<Object> output = new ArrayList<>();
     private int currentPosition = 0;
     //private static char currentChar;
     public EquationtoPostfix(String str){
@@ -22,48 +23,64 @@ public class EquationtoPostfix {
         infixTokenizer = new Tokenizer(str);
         Convert(infixTokenizer);
     }
-    public List<String> Convert(Tokenizer myTokenizer){
-
+    public List<Object> Convert(Tokenizer myTokenizer){
+        Boolean previousToken = true;
         while (myTokenizer.hasMoreTokens()) {
             Object currentToken = myTokenizer.getCurrentToken();
-            if (currentToken instanceof Float) {
-                output.add(currentToken.toString());
-            } else if (Elements.Operations.contains(currentToken.toString())) {
-                if (!operatorStack.isEmpty()) {
-                    String o = operatorStack.peek();
-                    if (Elements.opertatorAssociativity.get(currentToken) == Elements.Associativity.Left &&
-                            Elements.operatorPredence.get(currentToken) <= Elements.operatorPredence.get(o)
-                            ||
-                            (Elements.opertatorAssociativity.get(currentToken) == Elements.Associativity.Right &&
-                                    Elements.operatorPredence.get(currentToken) < Elements.operatorPredence.get(o))) {
-                        output.add(operatorStack.pop().toString());
-                    }
-                }
-                operatorStack.push(currentToken.toString());
-            } else if (currentToken.equals("(")) {
-                //output.add(currentToken.toString());
-                //operatorStack.push((String) currentToken);
-            } else if (currentToken.equals(")")) {
-                boolean leftParenthesisFound = false;
-                while (!operatorStack.isEmpty()) {
-                    String o = operatorStack.peek();
-                    if (o != "(") {
-                        output.add(operatorStack.pop().toString());
-                    } else {
-                        operatorStack.pop();
-                        leftParenthesisFound = true;
-                        break;
-                    }
-                }
-                //output.add(currentToken.toString());
-                if (!leftParenthesisFound) {
-                    //do something with "The algebraic string contains mismatched parentheses (missing a left parenthesis)."
-                    // throw new ParseException();
+            if (currentToken.toString().equals("-")&& previousToken) {
+                myTokenizer.nextToken();
+                Object valueToken = myTokenizer.getCurrentToken();
+                if (valueToken instanceof Float) {
+                    float v = (float)(valueToken) *(-1);
+                    Expressions number = new Number(v);
+                    output.add(number);
+                    previousToken = false;
                 } else {
-                    //do something with "Unrecognized character '{0}'." Exception
-                    //throw new Exception();
+                    System.err.println("Invalid Expression");
+                    break;
                 }
-
+            }else{
+                if (currentToken instanceof Float) {
+                    float v = (float)(currentToken);
+                    Expressions number = new Number(v);
+                    output.add(number);
+                    previousToken = false;
+                } else if (Elements.Operations.contains(currentToken.toString())) {
+                    if (!operatorStack.isEmpty()) {
+                        String o = operatorStack.peek();
+                        if (Elements.opertatorAssociativity.get(currentToken) == Elements.Associativity.Left &&
+                                Elements.operatorPredence.get(currentToken) <= Elements.operatorPredence.get(o)
+                                ||
+                                (Elements.opertatorAssociativity.get(currentToken) == Elements.Associativity.Right &&
+                                        Elements.operatorPredence.get(currentToken) < Elements.operatorPredence.get(o))) {
+                            output.add(operatorStack.pop().toString());
+                        }
+                    }
+                    operatorStack.push(currentToken.toString());
+                    previousToken = true;
+                } else if (currentToken.equals("(")) {
+                    previousToken = true;
+                } else if (currentToken.equals(")")) {
+                    boolean leftParenthesisFound = false;
+                    while (!operatorStack.isEmpty()) {
+                        String o = operatorStack.peek();
+                        if (o != "(") {
+                            output.add(operatorStack.pop().toString());
+                        } else {
+                            operatorStack.pop();
+                            leftParenthesisFound = true;
+                            break;
+                        }
+                    }
+                    //output.add(currentToken.toString());
+                    if (!leftParenthesisFound) {
+                        //do something with "The algebraic string contains mismatched parentheses (missing a left parenthesis)."
+                        // throw new ParseException();
+                    } else {
+                        //do something with "Unrecognized character '{0}'." Exception
+                        //throw new Exception();
+                    }
+                }
             }
             myTokenizer.nextToken();
         }
@@ -80,7 +97,7 @@ public class EquationtoPostfix {
 
     public String toString(){
         String result = " ";
-        for (String c : output){
+        for (Object c : output){
             result = result+c + " ";
         }
         return result;

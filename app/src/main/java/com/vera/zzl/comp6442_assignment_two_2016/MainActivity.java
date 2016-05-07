@@ -11,6 +11,8 @@ import com.vera.zzl.comp6442_assignment_two_2016.core.Expressions;
 import com.vera.zzl.comp6442_assignment_two_2016.core.Tokenizer;
 import com.vera.zzl.comp6442_assignment_two_2016.exceptions.ParseException;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     int plusOrMinusCounter = 0;
     TextView textInputView;
@@ -103,10 +105,10 @@ public class MainActivity extends AppCompatActivity {
     public void Calculate(View view){
         String inputExpression = textInputView.getText().toString();
         EquationtoPostfix PostfixExpression = new EquationtoPostfix(inputExpression);
-        String result = PostfixExpression.toString();
-        Tokenizer evaluate = new Tokenizer(result);
+        Tokenizer infixToken = new Tokenizer(inputExpression);
+        List<Object> result = PostfixExpression.Convert(infixToken);
         try {
-            Expressions finalExpressionTree = Expressions.parse(evaluate);
+            Expressions finalExpressionTree = Expressions.parse(result);
             textOutputView.setText(String.valueOf(finalExpressionTree.evaluate()));
         }catch (ParseException e){
 

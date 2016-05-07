@@ -8,6 +8,7 @@ import com.vera.zzl.comp6442_assignment_two_2016.Operation.Multiplication;
 import com.vera.zzl.comp6442_assignment_two_2016.Operation.Subtraction;
 import com.vera.zzl.comp6442_assignment_two_2016.exceptions.ParseException;
 
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -93,6 +94,59 @@ public abstract class Expressions {
         return expressionResult;
     }
 
+    static public Expressions parse(List<Object> outputStack) throws ParseException{
+        //Object currentToken = outputStack.get(0);
+        for (Object currentToken: outputStack){
+            if (currentToken instanceof Number){
+                expressionsStack.push((Number)currentToken);
+            }else if (currentToken.equals("+")){
+                if (expressionsStack.size() < 2){
+                    // do something
+                }
+                Expressions rPara = expressionsStack.pop();
+                Expressions lPara = expressionsStack.pop();
+                Expressions result = new Addition(lPara, rPara);
+                expressionsStack.push(result);
+            }else if (currentToken.equals("-")){
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
+                Expressions rPara = expressionsStack.pop();
+                Expressions lPara = expressionsStack.pop();
+                Expressions result = new Subtraction(lPara, rPara);
+                expressionsStack.push(result);
+            } else if (currentToken.equals("*")) {
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
+                Expressions rPara = expressionsStack.pop();
+                Expressions lPara = expressionsStack.pop();
+                Expressions result = new Multiplication(lPara, rPara);
+                expressionsStack.push(result);
+            } else if (currentToken.equals("/")) {
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
+                Expressions rPara = expressionsStack.pop();
+                Expressions lPara = expressionsStack.pop();
+                Expressions result = new Division(lPara, rPara);
+                expressionsStack.push(result);
+            }
+            else if (currentToken.equals("%")){
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
+                Expressions rPara = expressionsStack.pop();
+                Expressions lPara = expressionsStack.pop();
+                Expressions result = new Mod(lPara, rPara);
+                expressionsStack.push(result);
+            }else {
+                throw new ParseException();
+            }
+        }
+        Expressions expressionResult = expressionsStack.peek();
+        return expressionResult;
+    }
         /*  This is a place holder in order to get show
             and evaluate working first */
 }
