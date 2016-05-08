@@ -19,8 +19,7 @@ public class Multiplication extends Expressions {
     }
 
     @Override
-    public float evaluate(){
-        return leftPara.evaluate()*rightPara.evaluate();
+    public Float evaluate(){
+        return (float)leftPara.evaluate()*(float)rightPara.evaluate();
     }
-
 }

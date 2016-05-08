@@ -13,23 +13,24 @@ import com.vera.zzl.comp6442_assignment_two_2016.core.Expressions;
  *
  * @author Zhaolian
  * @version 1.0
- * @since 7/05/2016
+ * @since 8/05/2016
  **/
-public class Sin extends Expressions{
-    private Expressions para;
+public class Oct extends Expressions {
+    private int lPara;
 
-    public Sin(Expressions para){
-        this.para = para;
+    public Oct(int lPara){
+        this.lPara = lPara;
     }
 
     @Override
     public String show(){
-        return para.show() + " sin";
+        return "( "+lPara + " Oct )";
     }
 
     @Override
-    public Float evaluate(){
-        float rPara = (float)para.evaluate();
-        return (float)Math.sin(rPara);
+    public String evaluate(){
+
+        return Integer.toOctalString(lPara);
+
     }
 }

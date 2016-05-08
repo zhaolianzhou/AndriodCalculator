@@ -7,29 +7,29 @@ import com.vera.zzl.comp6442_assignment_two_2016.core.Expressions;
  * The AddNum program implements an application that
  * simply adds two given integer numbers and Prints
  * the output on the screen.
- * <p>ToDo: add propar class comments
+ * <p>ToDo: add proper class comments
  * <b>Note:</b> Giving proper comments in your program makes it more
  * user friendly and it is assumed as a high quality code.
  *
  * @author Zhaolian
  * @version 1.0
- * @since 7/05/2016
+ * @since 8/05/2016
  **/
-public class Sin extends Expressions{
+public class Tan extends Expressions {
     private Expressions para;
 
-    public Sin(Expressions para){
+    public Tan(Expressions para){
         this.para = para;
     }
 
     @Override
     public String show(){
-        return para.show() + " sin";
+        return para.show() + " tan";
     }
 
     @Override
     public Float evaluate(){
         float rPara = (float)para.evaluate();
-        return (float)Math.sin(rPara);
+        return (float) Math.tan(rPara);
     }
 }

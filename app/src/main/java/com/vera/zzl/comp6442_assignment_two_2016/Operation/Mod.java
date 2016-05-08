@@ -20,18 +20,18 @@ public class Mod extends Expressions {
     }
 
     @Override
-    public float evaluate() {
+    public Float evaluate(){
         try {
-            float rPara = rightPara.evaluate();
-            float lPara = leftPara.evaluate();
-            if (lPara != Math.round(lPara) || rPara != Math.round(rPara)) {
+            float rPara = (float)rightPara.evaluate();
+            float lPara = (float)leftPara.evaluate();
+            if (lPara!= Math.round(lPara)||rPara!= Math.round(rPara)){
                 throw new ArithmeticException("Parameter is not a integer.");
             }
 
-            return leftPara.evaluate() % rightPara.evaluate();
-        } catch (ArithmeticException e) {
+            return (float)leftPara.evaluate()%(float)rightPara.evaluate();
+        }catch (ArithmeticException e){
             System.out.println("Warning! Attempted to mod by an non-integer!");
         }
-        return 0;
+        return 0f;
     }
 }

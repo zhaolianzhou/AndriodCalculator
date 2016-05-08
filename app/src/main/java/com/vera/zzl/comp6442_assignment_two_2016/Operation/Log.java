@@ -13,23 +13,23 @@ import com.vera.zzl.comp6442_assignment_two_2016.core.Expressions;
  *
  * @author Zhaolian
  * @version 1.0
- * @since 7/05/2016
+ * @since 8/05/2016
  **/
-public class Sin extends Expressions{
+public class Log extends Expressions {
     private Expressions para;
 
-    public Sin(Expressions para){
+    public Log(Expressions para){
         this.para = para;
     }
 
     @Override
     public String show(){
-        return para.show() + " sin";
+        return para.show() + " log";
     }
 
     @Override
     public Float evaluate(){
         float rPara = (float)para.evaluate();
-        return (float)Math.sin(rPara);
+        return  (float)Math.log(rPara);
     }
 }

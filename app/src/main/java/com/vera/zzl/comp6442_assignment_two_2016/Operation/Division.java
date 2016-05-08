@@ -19,18 +19,18 @@ public class Division extends Expressions {
     }
 
     @Override
-    public float evaluate(){
+    public Float evaluate(){
         try {
-            float rPara = rightPara.evaluate();
+            float rPara = (float)rightPara.evaluate();
             float expected = 0;
             if (Math.abs(rPara - expected) < 0.00001){
                 throw new ArithmeticException("Divide by zero");
             }
-            return leftPara.evaluate()/rightPara.evaluate();
+            return (float)leftPara.evaluate()/(float)rightPara.evaluate();
         }catch (ArithmeticException e){
             System.out.println("Warning! Attempted to divide by zero!");
         }
-        return 0;
+        return 0f;
     }
 
 }

@@ -13,23 +13,30 @@ import com.vera.zzl.comp6442_assignment_two_2016.core.Expressions;
  *
  * @author Zhaolian
  * @version 1.0
- * @since 7/05/2016
+ * @since 8/05/2016
  **/
-public class Sin extends Expressions{
-    private Expressions para;
+public class And extends Expressions{
+    private Expressions lPara;
+    private Expressions rPara;
 
-    public Sin(Expressions para){
-        this.para = para;
+    public And(Expressions lPara, Expressions rPara){
+        this.lPara = lPara;
+        this.rPara = rPara;
     }
 
     @Override
     public String show(){
-        return para.show() + " sin";
+        return "( "+lPara.show() +" " + rPara.show() + " AND )";
     }
 
     @Override
     public Float evaluate(){
-        float rPara = (float)para.evaluate();
-        return (float)Math.sin(rPara);
+        float lpara = (float)lPara.evaluate();
+        float rpara = (float)rPara.evaluate();
+        if (IsPositive(lpara) == 1
+                && IsPositive(rpara) == 1)
+            return 1f;
+        else
+            return -1f;
     }
 }

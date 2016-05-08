@@ -6,6 +6,7 @@ import com.vera.zzl.comp6442_assignment_two_2016.Operation.Addition;
 import com.vera.zzl.comp6442_assignment_two_2016.Operation.Division;
 import com.vera.zzl.comp6442_assignment_two_2016.Operation.Multiplication;
 import com.vera.zzl.comp6442_assignment_two_2016.Operation.Subtraction;
+import com.vera.zzl.comp6442_assignment_two_2016.Operation.Pow;
 import com.vera.zzl.comp6442_assignment_two_2016.exceptions.ParseException;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public abstract class Expressions {
         (which could be parsed back into a expression) */
     public abstract String show();
     /* This method evaluates the expression */
-    public abstract float evaluate();
+    public abstract Object evaluate();
 
     private static Stack<Expressions> expressionsStack = new Stack<>();
     static public Expressions parse(Tokenizer myTokenizer) throws ParseException {
@@ -84,6 +85,14 @@ public abstract class Expressions {
                 Expressions rPara = expressionsStack.pop();
                 Expressions lPara = expressionsStack.pop();
                 Expressions result = new Mod(lPara, rPara);
+                expressionsStack.push(result);
+            }else if (currentToken.equals("^")){
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
+                Expressions rPara = expressionsStack.pop();
+                Expressions lPara = expressionsStack.pop();
+                Expressions result = new Pow(lPara, rPara);
                 expressionsStack.push(result);
             }else {
                 throw new ParseException();
@@ -149,4 +158,15 @@ public abstract class Expressions {
     }
         /*  This is a place holder in order to get show
             and evaluate working first */
+
+    static public int IsPositive(float number){
+        float PositiveZero = 1E-7f;
+        float NegativeZero = -1E-7f;
+        if (Math.abs(number) < PositiveZero)
+            return 0;
+        else if (number >= PositiveZero)
+            return 1;
+        else
+            return -1;
+    }
 }
