@@ -104,7 +104,6 @@ public abstract class Expressions {
     }
 
     static public Expressions parse(List<Object> outputStack) throws ParseException{
-        //Object currentToken = outputStack.get(0);
         for (Object currentToken: outputStack){
             if (currentToken instanceof Number){
                 expressionsStack.push((Number)currentToken);
@@ -140,14 +139,21 @@ public abstract class Expressions {
                 Expressions lPara = expressionsStack.pop();
                 Expressions result = new Division(lPara, rPara);
                 expressionsStack.push(result);
-            }
-            else if (currentToken.equals("%")){
+            } else if (currentToken.equals("%")){
                 if (expressionsStack.size() < 2) {
                     //do something with not enough paras.
                 }
                 Expressions rPara = expressionsStack.pop();
                 Expressions lPara = expressionsStack.pop();
                 Expressions result = new Mod(lPara, rPara);
+                expressionsStack.push(result);
+            }else if (currentToken.equals("^")){
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
+                Expressions rPara = expressionsStack.pop();
+                Expressions lPara = expressionsStack.pop();
+                Expressions result = new Pow(lPara, rPara);
                 expressionsStack.push(result);
             }else {
                 throw new ParseException();

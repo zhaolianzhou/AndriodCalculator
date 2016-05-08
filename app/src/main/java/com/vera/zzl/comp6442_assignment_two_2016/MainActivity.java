@@ -132,6 +132,20 @@ public class MainActivity extends AppCompatActivity {
         updateTextView("%");
     }
 
+    public void buttonSquare(View view){
+        startNewExpression(view);
+        updateTextView("^");
+    }
+
+    public void buttonLeftBracket(View view){
+        startNewExpression(view);
+        updateTextView("(");
+    }
+
+    public void buttonRightBracket(View view){
+        startNewExpression(view);
+        updateTextView(")");
+    }
     /**
      * Need further actions.
      * @param view
@@ -160,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
         }catch (ParseException e){
 
         }
-
         finally {
             equalClicked =true;
             //clearData(view);

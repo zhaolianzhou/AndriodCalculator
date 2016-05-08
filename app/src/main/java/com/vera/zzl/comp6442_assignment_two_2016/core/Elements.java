@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
  */
 public class Elements {
     public static String Numbers = "0123456789";
-    public static String Operations = "+-*/%";
+    public static String Operations = "+-*/%^";
     public static String Brackets = "()";
     public static final char whiteSpace[] = {' ','\n','\t','\r','f'};
     public static String AllowedCharacters = Numbers+Operations+Brackets+" ";

@@ -26,7 +26,7 @@ public class Number extends Expressions {
     }
 
     @Override
-    public float evaluate(){
+    public Float evaluate(){
         return value;
     }
 }
