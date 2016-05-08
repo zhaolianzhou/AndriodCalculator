@@ -14,121 +14,197 @@ import com.vera.zzl.comp6442_assignment_two_2016.exceptions.ParseException;
 
 import java.util.List;
 
+/**
+ * MainActivity
+ */
 public class MainActivity extends AppCompatActivity {
     int plusOrMinusCounter = 0;
     TextView textInputView;
     TextView textOutputView;
     String displayValue = "";
-
     boolean equalClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textInputView =(TextView) findViewById(R.id.textViewDisplay);
+        textInputView = (TextView) findViewById(R.id.textViewDisplay);
         textOutputView = (TextView) findViewById(R.id.textOutputView);
-        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/digital-7.ttf");
+        Typeface type = Typeface.createFromAsset(getAssets(), "fonts/digital-7.ttf");
         textInputView.setTypeface(type);
         textOutputView.setTypeface(type);
 
     }
 
-    public  void clearData(View view){
+    /**
+     * @param view
+     */
+    public void clearData(View view) {
         displayValue = "";
         textInputView.setText("");
         textOutputView.setText("");
     }
 
-    private void updateTextView(String value){
-        displayValue = displayValue + value ;
+    /**
+     * @param value
+     */
+    private void updateTextView(String value) {
+        displayValue = displayValue + value;
         textInputView.setText(displayValue);
     }
-    public void buttonValueSeven(View view){
+
+    /**
+     * @param view
+     */
+    public void buttonValueSeven(View view) {
 
         startNewExpression(view);
         updateTextView("7");
     }
 
+    /**
+     * @param view
+     */
     private void startNewExpression(View view) {
         if (equalClicked) {
-            equalClicked =false;
+            equalClicked = false;
             clearData(view);
         }
     }
 
-    public void buttonValueEight(View view){
+    /**
+     * @param view
+     */
+    public void buttonValueEight(View view) {
         startNewExpression(view);
         updateTextView("8");
     }
-    public void buttonValueNine(View view){
+
+    /**
+     * @param view
+     */
+    public void buttonValueNine(View view) {
         startNewExpression(view);
         updateTextView("9");
     }
-    public void buttonValueFour(View view){
+
+    /**
+     * @param view
+     */
+    public void buttonValueFour(View view) {
         startNewExpression(view);
         updateTextView("4");
     }
-    public void buttonValueFive(View view){
+
+    /**
+     * @param view
+     */
+    public void buttonValueFive(View view) {
         startNewExpression(view);
         updateTextView("5");
     }
-    public void buttonValueSix(View view){
+
+    /**
+     * @param view
+     */
+    public void buttonValueSix(View view) {
         startNewExpression(view);
         updateTextView("6");
     }
-    public void buttonValueOne(View view){
+
+    /**
+     * @param view
+     */
+    public void buttonValueOne(View view) {
         startNewExpression(view);
         updateTextView("1");
     }
-    public void buttonValueTwo(View view){
+
+    /**
+     * @param view
+     */
+    public void buttonValueTwo(View view) {
         startNewExpression(view);
         updateTextView("2");
     }
-    public void buttonValueThree(View view){
+
+    /**
+     * @param view
+     */
+    public void buttonValueThree(View view) {
         startNewExpression(view);
         updateTextView("3");
     }
-    public void buttonValueZero(View view){
+
+    /**
+     * @param view
+     */
+    public void buttonValueZero(View view) {
         startNewExpression(view);
         updateTextView("0");
     }
-    public void buttonValueDot(View view){
+
+    /**
+     * @param view
+     */
+    public void buttonValueDot(View view) {
         startNewExpression(view);
         updateTextView(".");
     }
 
-    public void buttonOperatorInc(View view){
+    /**
+     * @param view
+     */
+    public void buttonOperatorInc(View view) {
         startNewExpression(view);
-        updateTextView("+");}
-    public void buttonOperatorDec(View view){
+        updateTextView("+");
+    }
+
+    /**
+     * @param view
+     */
+    public void buttonOperatorDec(View view) {
         startNewExpression(view);
-        updateTextView("-");}
-    public void buttonOperatorMul(View view){
+        updateTextView("-");
+    }
+
+    /**
+     * @param view
+     */
+    public void buttonOperatorMul(View view) {
         startNewExpression(view);
-        updateTextView("*");}
-    public void buttonOperatorDiv(View view){
+        updateTextView("*");
+    }
+
+    /**
+     * @param view
+     */
+    public void buttonOperatorDiv(View view) {
         startNewExpression(view);
-        updateTextView("/");}
-    public void buttonPlusOrMinus(View view){
+        updateTextView("/");
+    }
+
+    /**
+     * @param view
+     */
+    public void buttonPlusOrMinus(View view) {
         int temp;
-        if ( plusOrMinusCounter % 2 == 0 ){
+        if (plusOrMinusCounter % 2 == 0) {
             temp = Integer.parseInt(displayValue);
-            if ( temp < 0 ){
+            if (temp < 0) {
                 temp = temp * -1;
             }
-            displayValue = ""+ temp;
+            displayValue = "" + temp;
             textInputView.setText(displayValue);
 
-        }else {
+        } else {
             temp = Integer.parseInt(displayValue) * -1;
-            displayValue = ""+ temp;
+            displayValue = "" + temp;
             textInputView.setText(displayValue);
         }
         plusOrMinusCounter++;
     }
     public void buttonModulus (View view){
-
         startNewExpression(view);
         updateTextView("%");
     }
