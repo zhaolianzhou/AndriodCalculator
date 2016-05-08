@@ -30,6 +30,6 @@ public class Log extends Expressions {
     @Override
     public Float evaluate(){
         float rPara = (float)para.evaluate();
-        return  (float)Math.log(rPara);
+        return  (float)Math.log10(rPara);
     }
 }
