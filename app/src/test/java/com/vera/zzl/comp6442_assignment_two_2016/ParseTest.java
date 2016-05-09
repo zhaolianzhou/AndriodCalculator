@@ -1,6 +1,6 @@
 package com.vera.zzl.comp6442_assignment_two_2016;
 
-import com.vera.zzl.comp6442_assignment_two_2016.core.EquationtoPostfix;
+import com.vera.zzl.comp6442_assignment_two_2016.core.EquationToPostfix;
 import com.vera.zzl.comp6442_assignment_two_2016.core.Expressions;
 import com.vera.zzl.comp6442_assignment_two_2016.core.Tokenizer;
 import com.vera.zzl.comp6442_assignment_two_2016.exceptions.ParseException;
@@ -28,7 +28,7 @@ public class ParseTest {
         ArrayList<Tokenizer> postfixTokenizer = new ArrayList<>();
 
         for(int i = 0; i < testExpressions.length; i++){
-            EquationtoPostfix convert = new EquationtoPostfix(testExpressions[i]);
+            EquationToPostfix convert = new EquationToPostfix(testExpressions[i]);
             postfixEquation.add(convert.toString());
             postfixTokenizer.add(new Tokenizer(postfixEquation.get(i)));
         }

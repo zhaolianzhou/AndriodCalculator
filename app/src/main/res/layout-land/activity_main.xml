@@ -155,12 +155,12 @@
             android:textSize="25dp"
             android:onClick="buttonHEX"
             />
-        <Button android:text="DEC"
+        <Button android:text="OCT"
             android:layout_column="1"
             android:layout_row="4"
             android:background="@drawable/button_gray"
             android:textSize="25dp"
-            android:onClick="buttonDEC"
+            android:onClick="buttonOCT"
             />
         <Button android:text="BIN"
             android:layout_column="2"
