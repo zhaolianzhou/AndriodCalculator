@@ -266,7 +266,12 @@ public class MainActivity extends AppCompatActivity {
         startNewExpression(view);
         updateTextView("O");
     }
-    public void buttonLogicGateNOT(View view){}
+    public void buttonLogicGateNOT(View view){
+        Expressions result = StringToFinalExpression(view);
+        Expressions not = new Not(result);
+        String ResultShow = String.valueOf(not.evaluate());
+        SetResult(view,ResultShow);
+    }
     public void buttonLogicGateXOR(View view){
         startNewExpression(view);
         updateTextView("X");
