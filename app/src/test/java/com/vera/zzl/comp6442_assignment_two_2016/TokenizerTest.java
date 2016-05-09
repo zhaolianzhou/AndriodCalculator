@@ -1,6 +1,6 @@
-package com.vera.zzl.comp6442_assignment_two_2016;
+package com.vera.zzl.calculator;
 
-import com.vera.zzl.comp6442_assignment_two_2016.core.Tokenizer;
+import com.vera.zzl.calculator.core.Tokenizer;
 
 import org.junit.Test;
 

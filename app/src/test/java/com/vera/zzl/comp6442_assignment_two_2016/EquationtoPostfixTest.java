@@ -1,6 +1,6 @@
-package com.vera.zzl.comp6442_assignment_two_2016;
+package com.vera.zzl.calculator;
 
-import com.vera.zzl.comp6442_assignment_two_2016.core.EquationToPostfix;
+import com.vera.zzl.calculator.core.EquationToPostfix;
 
 import org.junit.Test;
 

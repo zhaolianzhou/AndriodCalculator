@@ -1,9 +1,9 @@
-package com.vera.zzl.comp6442_assignment_two_2016;
+package com.vera.zzl.calculator;
 
-import com.vera.zzl.comp6442_assignment_two_2016.core.EquationToPostfix;
-import com.vera.zzl.comp6442_assignment_two_2016.core.Expressions;
-import com.vera.zzl.comp6442_assignment_two_2016.core.Tokenizer;
-import com.vera.zzl.comp6442_assignment_two_2016.exceptions.ParseException;
+import com.vera.zzl.calculator.core.EquationToPostfix;
+import com.vera.zzl.calculator.core.Expressions;
+import com.vera.zzl.calculator.core.Tokenizer;
+import com.vera.zzl.calculator.exceptions.ParseException;
 
 import org.junit.Test;
 

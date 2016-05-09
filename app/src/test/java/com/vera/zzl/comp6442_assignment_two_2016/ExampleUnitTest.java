@@ -1,4 +1,4 @@
-package com.vera.zzl.comp6442_assignment_two_2016;
+package com.vera.zzl.calculator;
 
 import org.junit.Test;
 
