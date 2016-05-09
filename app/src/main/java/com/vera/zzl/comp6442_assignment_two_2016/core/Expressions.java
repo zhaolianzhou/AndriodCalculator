@@ -1,12 +1,7 @@
 package com.vera.zzl.comp6442_assignment_two_2016.core;
 
-import com.vera.zzl.comp6442_assignment_two_2016.Operation.Mod;
+import com.vera.zzl.comp6442_assignment_two_2016.Operation.*;
 import com.vera.zzl.comp6442_assignment_two_2016.Operation.Number;
-import com.vera.zzl.comp6442_assignment_two_2016.Operation.Addition;
-import com.vera.zzl.comp6442_assignment_two_2016.Operation.Division;
-import com.vera.zzl.comp6442_assignment_two_2016.Operation.Multiplication;
-import com.vera.zzl.comp6442_assignment_two_2016.Operation.Subtraction;
-import com.vera.zzl.comp6442_assignment_two_2016.Operation.Pow;
 import com.vera.zzl.comp6442_assignment_two_2016.exceptions.ParseException;
 
 import java.util.List;
@@ -154,6 +149,31 @@ public abstract class Expressions {
                 Expressions rPara = expressionsStack.pop();
                 Expressions lPara = expressionsStack.pop();
                 Expressions result = new Pow(lPara, rPara);
+                expressionsStack.push(result);
+            }else if (currentToken.equals("A")){
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
+                Expressions rPara = expressionsStack.pop();
+                Expressions lPara = expressionsStack.pop();
+                Expressions result = new And(lPara, rPara);
+                expressionsStack.push(result);
+            }else if (currentToken.equals("O")){
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
+                Expressions rPara = expressionsStack.pop();
+                Expressions lPara = expressionsStack.pop();
+                Expressions result = new Or(lPara, rPara);
+                expressionsStack.push(result);
+            }
+            else if (currentToken.equals("X")){
+                if (expressionsStack.size() < 2) {
+                    //do something with not enough paras.
+                }
+                Expressions rPara = expressionsStack.pop();
+                Expressions lPara = expressionsStack.pop();
+                Expressions result = new Xor(lPara, rPara);
                 expressionsStack.push(result);
             }else {
                 throw new ParseException();

@@ -7,7 +7,7 @@ import com.vera.zzl.comp6442_assignment_two_2016.exceptions.ParseException;
 public class Tokenizer {
     public static String Numbers = "012345678";
     public static String Decimal = ".";
-    public static String Operations = "+-*/%()^";
+    public static String Operations = "+-*/%()^ANOX";
     public static final char whitespace[] = {' ', '\n', '\t','\r','\f'};
     public static String ValidFloat = Numbers + Decimal;
     public static String AllowedCharacters = Numbers+Operations+Decimal+" ";

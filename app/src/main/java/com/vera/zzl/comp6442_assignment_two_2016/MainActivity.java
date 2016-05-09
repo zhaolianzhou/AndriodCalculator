@@ -258,10 +258,19 @@ public class MainActivity extends AppCompatActivity {
     /************************************************
      *********Logic Gate button  ********************
      ************************************************/
-    public void buttonLogicGateAND(View view){}
-    public void buttonLogicGateOR(View view){}
+    public void buttonLogicGateAND(View view){
+        startNewExpression(view);
+        updateTextView("A");
+    }
+    public void buttonLogicGateOR(View view){
+        startNewExpression(view);
+        updateTextView("O");
+    }
     public void buttonLogicGateNOT(View view){}
-    public void buttonLogicGateXOR(View view){}
+    public void buttonLogicGateXOR(View view){
+        startNewExpression(view);
+        updateTextView("X");
+    }
 
     /**************************************************
      ******* Log function *****************************
@@ -285,11 +294,27 @@ public class MainActivity extends AppCompatActivity {
     /**************************************************
      ******* HEX, DEC, BIN function *********************
      **************************************************/
-    public void buttonHEX(View view){}
-    public void buttonDEC(View view){}
-    public void buttonBIN(View view){}
-
-
+    public void buttonHEX(View view){
+        Expressions result = StringToFinalExpression(view);
+        int resultRound = Math.round((float) result.evaluate());
+        Expressions hex = new Hex(resultRound);
+        String ResultShow = hex.evaluate().toString();
+        SetResult(view,ResultShow);
+    }
+    public void buttonDEC(View view){
+        Expressions result = StringToFinalExpression(view);
+        int resultRound = Math.round((float) result.evaluate());
+        Expressions oct = new Oct(resultRound);
+        String ResultShow = oct.evaluate().toString();
+        SetResult(view,ResultShow);
+    }
+    public void buttonBIN(View view){
+        Expressions result = StringToFinalExpression(view);
+        int resultRound = Math.round((float) result.evaluate());
+        Expressions bin = new Bin(resultRound);
+        String ResultShow = bin.evaluate().toString();
+        SetResult(view,ResultShow);
+    }
 
     /**
      * Do the calculate, need some optimize
