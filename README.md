@@ -18,8 +18,8 @@ Licensed under the [Apache License 2.0](https://gitlab.cecs.anu.edu.au/u5857495/
 
 
 ### Documentation
-* [Calculator Class diagram]()
-* [Test plan summary]()
+* [Calculator Class diagram](https://gitlab.cecs.anu.edu.au/u5857495/comp6442_assignment_two_2016/wikis/calculator-class-disagram)
+* [Test plan summary](https://gitlab.cecs.anu.edu.au/u5857495/comp6442_assignment_two_2016/wikis/test-summary)
 
 ### Latest Version 
 * 1.0.0 
