@@ -70,10 +70,11 @@
             android:textSize="25dp"
             android:onClick="clearData"
             />
-        <Button android:text="@string/Inc_Dec"
+        <Button android:text="@string/history"
             android:background="@drawable/button_gray"
             android:textSize="25dp"
-            android:onClick="buttonPlusOrMinus"
+            android:drawableLeft="@mipmap/ic_action_1462817147_ic_history_48px"
+            android:onClick="buttonHistory"
             />
         <Button android:text="@string/Mod"
             android:background="@drawable/button_gray"
