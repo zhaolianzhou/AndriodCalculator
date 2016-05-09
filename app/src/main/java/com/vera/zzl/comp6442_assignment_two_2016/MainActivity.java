@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
         String ResultShow = hex.evaluate().toString();
         SetResult(view,ResultShow);
     }
-    public void buttonDEC(View view){
+    public void buttonOCT(View view){
         Expressions result = StringToFinalExpression(view);
         int resultRound = Math.round((float) result.evaluate());
         Expressions oct = new Oct(resultRound);

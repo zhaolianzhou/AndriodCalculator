@@ -1,6 +1,6 @@
 package com.vera.zzl.comp6442_assignment_two_2016;
 
-import com.vera.zzl.comp6442_assignment_two_2016.core.EquationtoPostfix;
+import com.vera.zzl.comp6442_assignment_two_2016.core.EquationToPostfix;
 
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ public class EquationtoPostfixTest {
         ArrayList<String> postfixEquation = new ArrayList<>();
 
         for (int i = 0; i < infixEquation.length; i++ ){
-            EquationtoPostfix convert = new EquationtoPostfix(infixEquation[i]);
+            EquationToPostfix convert = new EquationToPostfix(infixEquation[i]);
             String result = convert.toString();
             postfixEquation.add(result);
         }
