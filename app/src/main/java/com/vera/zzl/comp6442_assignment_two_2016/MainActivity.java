@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textOutputView;
     String displayValue = "";
     boolean equalClicked = false;
+    private DataPersistence dataPersistence;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         Typeface type = Typeface.createFromAsset(getAssets(), "fonts/digital-7.ttf");
         textInputView.setTypeface(type);
         textOutputView.setTypeface(type);
-
+        dataPersistence = new DataPersistence(getFilesDir());
     }
 
     /**
@@ -184,6 +185,13 @@ public class MainActivity extends AppCompatActivity {
         updateTextView("/");
     }
 
+    public void buttonHistory(View view){
+        //Start a new intent and pass history values to next activity
+        //display all the data on a list
+        // add onclick function to list items
+        // display it on calculator view
+        dataPersistence.readValues();
+    }
     /**
      * @param view
      */
@@ -329,6 +337,9 @@ public class MainActivity extends AppCompatActivity {
         Expressions result = StringToFinalExpression(view);
         String ResultShow = String.valueOf(result.evaluate());
         SetResult(view, ResultShow);
+        String historyExpressionString = ""+ textInputView.getText().toString()+ "= "+
+                ResultShow;
+        dataPersistence.addHistoryData(historyExpressionString);
     }
 
     private Expressions StringToFinalExpression(View view){

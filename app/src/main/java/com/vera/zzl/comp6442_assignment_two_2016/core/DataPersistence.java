@@ -1,5 +1,7 @@
 package com.vera.zzl.comp6442_assignment_two_2016.core;
 
+import android.util.Log;
+
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -16,7 +18,12 @@ import java.util.ArrayList;
  */
 public class DataPersistence {
     private ArrayList<String> expressionCollection;
+    private File fileDir;
 
+    public DataPersistence(File fileDir) {
+        readExpressionsFromFile(fileDir);
+        this.fileDir = fileDir;
+    }
 
     /**
      *
@@ -36,7 +43,7 @@ public class DataPersistence {
      *
      * @param fileDir
      */
-    public void writeExpressionsFromFile(File fileDir){
+    private void writeExpressionsFromFile(File fileDir){
         File dir = fileDir;
         File historyFile = new File(dir, "ExpressionHistory.txt");
         try{
@@ -46,4 +53,21 @@ public class DataPersistence {
         }
     }
 
+    public void addHistoryData(String expression){
+        Log.d("DataPersistence", "Expression String: "+ expression);
+        expressionCollection.add(expression);
+        writeExpressionsFromFile(fileDir);
+    }
+
+    public void readValues (){
+        for (String s : expressionCollection){
+            Log.d("DataPersistence", "Expression String: "+ s);
+        }
+    }
+
+    public void clearHistoryValues(){
+        expressionCollection = new ArrayList<String>();
+
+
+    }
 }
