@@ -1,12 +1,17 @@
 package com.vera.zzl.calculator;
 
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.vera.zzl.calculator.Operation.*;
+import com.vera.zzl.calculator.Operation.Log;
 import com.vera.zzl.calculator.core.*;
 //import com.vera.zzl.comp6442_assignment_two_2016.core.Expressions;
 //import com.vera.zzl.comp6442_assignment_two_2016.core.Tokenizer;
@@ -23,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     TextView textOutputView;
     String displayValue = "";
     boolean equalClicked = false;
-    private DataPersistence dataPersistence;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         Typeface type = Typeface.createFromAsset(getAssets(), "fonts/digital-7.ttf");
         textInputView.setTypeface(type);
         textOutputView.setTypeface(type);
-        dataPersistence = new DataPersistence(getFilesDir());
+
+
     }
 
     /**
@@ -190,7 +194,8 @@ public class MainActivity extends AppCompatActivity {
         //display all the data on a list
         // add onclick function to list items
         // display it on calculator view
-        dataPersistence.readValues();
+        Intent intent = new Intent(this, HistoryActivity.class);
+        startActivityForResult(intent, Constants.HISTORY_REQUEST_CODE);
     }
     /**
      * @param view
@@ -339,7 +344,15 @@ public class MainActivity extends AppCompatActivity {
         SetResult(view, ResultShow);
         String historyExpressionString = ""+ textInputView.getText().toString()+ "= "+
                 ResultShow;
-        dataPersistence.addHistoryData(historyExpressionString);
+        InsertExpression(historyExpressionString);
+
+    }
+
+    private void InsertExpression(String historyExpressionString) {
+        ContentValues values = new ContentValues();
+        values.put(Constants.EXPRESSION_TEXT, historyExpressionString);
+        Uri expressionURI =  getContentResolver().insert(Constants.CONTENT_URI, values);
+        android.util.Log.d("MainActivity", expressionURI.getLastPathSegment());
     }
 
     private Expressions StringToFinalExpression(View view){
