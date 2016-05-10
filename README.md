@@ -19,6 +19,14 @@ And for your most demanding needs, CaL™ allows you to add or remove the functi
 </p>
 ## Contents
 * [Key Features](https://gitlab.cecs.anu.edu.au/u5857495/comp6442_assignment_two_2016/edit/master/README.md#usage)
+    * Basic Claculator 
+    * Scientific Calculator 
+    * Expression History
+    * Logical bit-wise Operators Support ( AND, OR, NOT, XOR )
+    * Programmer mode to support alternate number formats such as binary, octal, hexadecimal
+    * More operators such as %, square, square root, reciprocal and Pi
+    * Orientation Support 
+    
 * [Documentation](https://gitlab.cecs.anu.edu.au/u5857495/comp6442_assignment_two_2016/edit/master/README.md#documentation)
     * Class Diagram
     * Test Plan Summary
