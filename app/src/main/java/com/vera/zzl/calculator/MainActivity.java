@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
         Expressions result = StringToFinalExpression(view);
         Expressions sin = new Sin(result);
         String ResultShow = String.valueOf(sin.evaluate());
-        SetResult(view,ResultShow);
+        SetResult(view, ResultShow);
     }
     public void buttonCOS(View view){
         Expressions result = StringToFinalExpression(view);
@@ -283,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
         Expressions result = StringToFinalExpression(view);
         Expressions not = new Not(result);
         String ResultShow = String.valueOf(not.evaluate());
-        SetResult(view,ResultShow);
+        SetResult(view, ResultShow);
     }
     public void buttonLogicGateXOR(View view){
         startNewExpression(view);
@@ -297,7 +297,7 @@ public class MainActivity extends AppCompatActivity {
         Expressions result = StringToFinalExpression(view);
         Expressions log = new Log(result);
         String ResultShow = String.valueOf(log.evaluate());
-        SetResult(view,ResultShow);
+        SetResult(view, ResultShow);
     }
 
     /**************************************************
@@ -371,5 +371,19 @@ public class MainActivity extends AppCompatActivity {
     private void SetResult(View view, String result){
         textOutputView.setText(result);
         equalClicked = true;
+    }
+
+    /**
+     * Dispatch incoming result to the correct fragment.
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        displayValue = "";
+        if (data != null && requestCode == Constants.HISTORY_REQUEST_CODE){
+            String value = data.getExtras().getString("SELECTED_EXPRESSION");
+            String[] x = value.split("=");
+            textInputView.setText(x[0]);
+        }
     }
 }

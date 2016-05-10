@@ -1,11 +1,13 @@
 package com.vera.zzl.calculator;
 
+import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,6 +28,7 @@ public class HistoryActivity extends AppCompatActivity
     private ArrayAdapter<String> historyItemsAdapter;
     private CursorAdapter cursorAdapter;
     private ListView listView;
+    private String action;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +48,7 @@ public class HistoryActivity extends AppCompatActivity
         listView.setDivider(new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, colors));
         listView.setDividerHeight(1);
         listView.setOnItemClickListener(getOnItemClickListener());
-
-
-
     }
-
-
 
     public AdapterView.OnItemClickListener getOnItemClickListener() {
         return new AdapterView.OnItemClickListener() {
@@ -59,7 +57,10 @@ public class HistoryActivity extends AppCompatActivity
                 Cursor cursor = (Cursor) listView.getItemAtPosition(position);
                 String selectedFromList = cursor.getString(cursor.getColumnIndex(Constants.EXPRESSION_TEXT));
                 Log.d("HistoryActivity", "Clicked Expression: "+ selectedFromList);
-                //Intent tempIntent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent tempIntent = new Intent(getApplicationContext(), MainActivity.class);
+                tempIntent.putExtra("SELECTED_EXPRESSION", selectedFromList);
+                setResult(Activity.RESULT_OK,tempIntent);
+                finish();
             }
         };
     }

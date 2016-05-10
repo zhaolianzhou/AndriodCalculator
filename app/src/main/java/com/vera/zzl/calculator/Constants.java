@@ -38,4 +38,5 @@ public final class Constants {
 
 
     public static final int HISTORY_REQUEST_CODE = 404;
+    public static final String CONTENT_ITEM_TYPE = "expression";
 }
