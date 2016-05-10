@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Calculator</string>
+    <string name="history_name">Expression History</string>
     <string name="DefaultDisplay">0.0</string>
     <string name="Zero">0</string>
     <string name="One">1</string>

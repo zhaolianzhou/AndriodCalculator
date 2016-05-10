@@ -7,11 +7,22 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.vera.zzl.calculator.HistoryActivity">
+    tools:context="com.vera.zzl.calculator.HistoryActivity"
+    android:layout_marginBottom="-17dip"
+    android:layout_marginLeft="-16dip"
+    android:layout_marginRight="-16dip"
+    android:layout_marginTop="-17dip"
+
+
+    >
 
     <ListView
         android:id="@+id/android:list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

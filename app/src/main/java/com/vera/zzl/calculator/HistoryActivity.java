@@ -6,6 +6,7 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,18 +18,15 @@ import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 import java.io.File;
 import java.util.ArrayList;
 
 public class HistoryActivity extends AppCompatActivity
-        implements LoaderManager.LoaderCallbacks<Cursor>{
-    private ArrayList<String> expressionCollection;
-    private File fileDir;
-    private ArrayAdapter<String> historyItemsAdapter;
+        implements LoaderManager.LoaderCallbacks<Cursor> {
     private CursorAdapter cursorAdapter;
     private ListView listView;
-    private String action;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +34,13 @@ public class HistoryActivity extends AppCompatActivity
         setContentView(R.layout.activity_history);
 
 
-        String[] from = { Constants.EXPRESSION_TEXT};
+        String[] from = {Constants.EXPRESSION_TEXT};
         int[] to = {R.id.lvItems};
         cursorAdapter = new SimpleCursorAdapter(this,
-                R.layout.history_list_items,null,from,to,0);
+                R.layout.history_list_items, null, from, to, 0);
         listView = (ListView) findViewById(android.R.id.list);
         listView.setAdapter(cursorAdapter);
-        getLoaderManager().initLoader(0,null,this);
+        getLoaderManager().initLoader(0, null, this);
 
         int[] colors = {0, 0xFFFF0000, 0};
         listView.setDivider(new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, colors));
@@ -56,10 +54,10 @@ public class HistoryActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Cursor cursor = (Cursor) listView.getItemAtPosition(position);
                 String selectedFromList = cursor.getString(cursor.getColumnIndex(Constants.EXPRESSION_TEXT));
-                Log.d("HistoryActivity", "Clicked Expression: "+ selectedFromList);
+                Log.d("HistoryActivity", "Clicked Expression: " + selectedFromList);
                 Intent tempIntent = new Intent(getApplicationContext(), MainActivity.class);
                 tempIntent.putExtra("SELECTED_EXPRESSION", selectedFromList);
-                setResult(Activity.RESULT_OK,tempIntent);
+                setResult(Activity.RESULT_OK, tempIntent);
                 finish();
             }
         };
@@ -70,7 +68,6 @@ public class HistoryActivity extends AppCompatActivity
      */
 
     /**
-     *
      * @param id
      * @param args
      * @return
@@ -81,7 +78,6 @@ public class HistoryActivity extends AppCompatActivity
     }
 
     /**
-     *
      * @param loader
      * @param data
      */
@@ -91,20 +87,12 @@ public class HistoryActivity extends AppCompatActivity
     }
 
     /**
-     *
      * @param loader
      */
     @Override
-    public void onLoaderReset(Loader<Cursor>  loader) {
+    public void onLoaderReset(Loader<Cursor> loader) {
         cursorAdapter.swapCursor(null);
     }
 
-
-    /**
-     * Recall LoaderManager to restart/refresh the content
-     */
-    public void recallLoader() {
-        getLoaderManager().restartLoader(0, null, this);
-    }
 
 }
