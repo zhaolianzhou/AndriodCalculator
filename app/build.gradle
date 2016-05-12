@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.vera.zzl.comp6442_assignment_two_2016"
+        applicationId "com.vera.zzl.calculator"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
