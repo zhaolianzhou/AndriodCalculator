@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.vera.zzl.comp6442_assignment_two_2016.MainActivity"
+    tools:context="com.vera.zzl.calculator.MainActivity"
     android:layout_marginBottom="-17dip"
     android:layout_marginLeft="-16dip"
 
@@ -70,10 +70,11 @@
             android:textSize="25dp"
             android:onClick="clearData"
             />
-        <Button android:text="@string/Inc_Dec"
+        <Button android:text="@string/history"
             android:background="@drawable/button_gray"
             android:textSize="25dp"
-            android:onClick="buttonPlusOrMinus"
+            android:drawableLeft="@mipmap/ic_action_1462817147_ic_history_48px"
+            android:onClick="buttonHistory"
             />
         <Button android:text="@string/Mod"
             android:background="@drawable/button_gray"
