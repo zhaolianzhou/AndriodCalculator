@@ -5,7 +5,6 @@ Licensed under the [Apache License 2.0](https://gitlab.cecs.anu.edu.au/u5857495/
 
 ## Introduction 
 CaL™ is a breeze to use for everyday calculations, with all the scientific capability you need for work and school just a swipe away. 
-And for your most demanding needs, CaL™ allows you to add or remove the functions and constants you need to make the perfect calculator designed by you,for you.
 
 ### Basic Calculator 
 
