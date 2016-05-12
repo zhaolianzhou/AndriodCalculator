@@ -36,7 +36,11 @@ public class ParseTest {
         for (int i = 0; i < postfixTokenizer.size(); i++){
             try {
                 Expressions result = Expressions.parse(postfixTokenizer.get(0));
+<<<<<<< HEAD:app/src/test/java/com/vera/zzl/calculator/ParseTest.java
                 assertTrue((Float)result.evaluate() == 6.25f);
+=======
+               // assertTrue(result.evaluate() == 6.25f);
+>>>>>>> e5df099301f4c4b1735e70367bbebb1d2a482e1d:app/src/test/java/com/vera/zzl/calculator/ParseTest.java
             } catch (ParseException e){
 
             }
