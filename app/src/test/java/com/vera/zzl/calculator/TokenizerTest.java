@@ -15,7 +15,6 @@ public class TokenizerTest {
         String testExpressions[] = new String[]{"(+ 2 3)*5/4",
                                                 "- 4 5",
                                                 "21.0 - (3.5 *6.2)"};
-
         Tokenizer testTokenizer = new Tokenizer(testExpressions[0]);
         assertEquals(testTokenizer.getCurrentToken(),"(");
         testTokenizer.nextToken();

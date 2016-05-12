@@ -1,5 +1,4 @@
 package com.vera.zzl.calculator;
-
 import com.vera.zzl.calculator.core.EquationtoPostfix;
 import com.vera.zzl.calculator.core.Expressions;
 import com.vera.zzl.calculator.core.Tokenizer;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 /**
  * Created by Zhaolian on 29/04/2016.
  */
