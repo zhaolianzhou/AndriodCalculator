@@ -33,7 +33,10 @@ CaL™ is a breeze to use for everyday calculations, with all the scientific cap
 * [References](https://gitlab.cecs.anu.edu.au/u5857495/comp6442_assignment_two_2016/edit/master/README.md#references)
 
 ## Usage
-
+* Expression History 
+<p align="center">
+    <img src="https://gitlab.cecs.anu.edu.au/u5857495/comp6442_assignment_two_2016/raw/86e8a28f27a07e1737ac4dfb78988c02b8f5bb6d/Screens/Persistence.gif" width="500" />
+</p>
 
 ### Documentation
 * [Calculator Class diagram](https://gitlab.cecs.anu.edu.au/u5857495/comp6442_assignment_two_2016/wikis/calculator-class-disagram)
